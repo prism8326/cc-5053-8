@@ -2,6 +2,7 @@
 node_modules/
 vendor/
 dist/
+/vowel_synth_demo.egg-info/
 build/
 .next/
 .nuxt/
@@ -21,5 +22,6 @@ __pycache__/
 .ruff_cache/
 .DS_Store
 *.log
+.bootstrap/
 .env
 .env.*

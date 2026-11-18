@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vowel-synth-demo"
+version = "0.1.0"
+description = "Local formant vowel synthesizer: controllable periodic source plus noise driving a formant cascade (teaching model, no TTS service)."
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "matplotlib>=3.6",
+]
+
+[project.optional-dependencies]
+realtime = ["sounddevice>=0.4"]
+test = ["pytest>=7"]
+
+[project.scripts]
+vowel-synth = "vowel_synth.cli:main"
+
+[tool.setuptools]
+packages = ["vowel_synth"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
