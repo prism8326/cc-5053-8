@@ -1,0 +1,52 @@
+{
+  "spec": {
+    "name": "homophone-multichannel",
+    "fs": 16000,
+    "block": 256,
+    "seed": 20261120,
+    "f0_requested": 176.0,
+    "f0_glide_ratio": 1.25,
+    "anchor_freqs": [
+      500.0,
+      1400.0,
+      2500.0,
+      3400.0
+    ],
+    "anchor_bws": [
+      70.0,
+      90.0,
+      130.0,
+      180.0
+    ],
+    "moved_freqs": [
+      820.0,
+      1950.0,
+      2700.0,
+      3400.0
+    ],
+    "tilt_target_db": -24.0,
+    "baseline_frac": 0.0,
+    "open_quotient": 0.55,
+    "shape": "rosenberg",
+    "lead": 0.3,
+    "hold": 0.55,
+    "glide": 0.55,
+    "hold2": 0.55,
+    "noise_floor": 0.006,
+    "breath_peak": 0.075,
+    "breath_delay": 0.1,
+    "breath_width": 0.14,
+    "clearance_target": 0.15
+  },
+  "resolved_f0_hz": 185.5,
+  "f0_clearance": {
+    "f0_requested": 176.0,
+    "f0_used": 185.5,
+    "clearance_ratio": 0.30464033120579637,
+    "worst_harmonic_offset_hz": 56.51200000000006,
+    "safe": true,
+    "clearance_target": 0.15,
+    "scored_segments": "pre-glide anchor and post-glide target only"
+  },
+  "answer_hidden": true
+}

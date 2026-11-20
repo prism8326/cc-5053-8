@@ -1,0 +1,338 @@
+{
+  "120": {
+    "alt_f0_requested_hz": 120.0,
+    "alt_f0_used_hz": 105.6,
+    "alt_clearance_ratio": 0.197,
+    "probes_s": [
+      1.48,
+      1.675,
+      1.85
+    ],
+    "explainability": {
+      "anchor": {
+        "variant": "anchor",
+        "frames": [
+          {
+            "t_s": 1.48,
+            "corr": 0.9999,
+            "rmse_db": 0.417,
+            "n_harmonics": 31
+          },
+          {
+            "t_s": 1.675,
+            "corr": 1.0,
+            "rmse_db": 0.295,
+            "n_harmonics": 31
+          },
+          {
+            "t_s": 1.85,
+            "corr": 1.0,
+            "rmse_db": 0.196,
+            "n_harmonics": 31
+          }
+        ]
+      },
+      "a_formant": {
+        "variant": "a_formant",
+        "frames": [
+          {
+            "t_s": 1.48,
+            "corr": 1.0,
+            "rmse_db": 0.217,
+            "n_harmonics": 31
+          },
+          {
+            "t_s": 1.675,
+            "corr": 0.9999,
+            "rmse_db": 0.302,
+            "n_harmonics": 31
+          },
+          {
+            "t_s": 1.85,
+            "corr": 1.0,
+            "rmse_db": 0.127,
+            "n_harmonics": 31
+          }
+        ]
+      },
+      "b_tilt": {
+        "variant": "b_tilt",
+        "frames": [
+          {
+            "t_s": 1.48,
+            "corr": 0.9999,
+            "rmse_db": 0.345,
+            "n_harmonics": 31
+          },
+          {
+            "t_s": 1.675,
+            "corr": 1.0,
+            "rmse_db": 0.28,
+            "n_harmonics": 31
+          },
+          {
+            "t_s": 1.85,
+            "corr": 1.0,
+            "rmse_db": 0.321,
+            "n_harmonics": 31
+          }
+        ]
+      }
+    },
+    "envelope_peaks_hz": {
+      "anchor": [
+        500.0,
+        1397.4,
+        2494.9,
+        3379.5
+      ],
+      "a_formant": [
+        820.5,
+        1951.3,
+        2694.9,
+        3374.4
+      ]
+    },
+    "nearest_harmonic_to_formant_hz": {
+      "anchor": [
+        528.0,
+        1452.0,
+        2508.0,
+        3432.0
+      ],
+      "a_formant": [
+        792.0,
+        1980.0,
+        2640.0,
+        3432.0
+      ]
+    },
+    "tolerance_db": 3.0,
+    "ok": true,
+    "note": "包络峰位由声道参数决定，不随 f0 改变；最靠近共振峰的谐波会随 f0 移动，不能当作共振峰。"
+  },
+  "260": {
+    "alt_f0_requested_hz": 260.0,
+    "alt_f0_used_hz": 291.2,
+    "alt_clearance_ratio": 0.1923,
+    "probes_s": [
+      1.48,
+      1.675,
+      1.85
+    ],
+    "explainability": {
+      "anchor": {
+        "variant": "anchor",
+        "frames": [
+          {
+            "t_s": 1.48,
+            "corr": 1.0,
+            "rmse_db": 0.169,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.675,
+            "corr": 1.0,
+            "rmse_db": 0.26,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.85,
+            "corr": 1.0,
+            "rmse_db": 0.087,
+            "n_harmonics": 11
+          }
+        ]
+      },
+      "a_formant": {
+        "variant": "a_formant",
+        "frames": [
+          {
+            "t_s": 1.48,
+            "corr": 1.0,
+            "rmse_db": 0.135,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.675,
+            "corr": 1.0,
+            "rmse_db": 0.188,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.85,
+            "corr": 1.0,
+            "rmse_db": 0.153,
+            "n_harmonics": 11
+          }
+        ]
+      },
+      "b_tilt": {
+        "variant": "b_tilt",
+        "frames": [
+          {
+            "t_s": 1.48,
+            "corr": 1.0,
+            "rmse_db": 0.183,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.675,
+            "corr": 0.9999,
+            "rmse_db": 0.428,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.85,
+            "corr": 1.0,
+            "rmse_db": 0.208,
+            "n_harmonics": 11
+          }
+        ]
+      }
+    },
+    "envelope_peaks_hz": {
+      "anchor": [
+        500.0,
+        1397.4,
+        2494.9,
+        3379.5
+      ],
+      "a_formant": [
+        820.5,
+        1951.3,
+        2694.9,
+        3374.4
+      ]
+    },
+    "nearest_harmonic_to_formant_hz": {
+      "anchor": [
+        364.0,
+        1456.0,
+        2548.0,
+        3276.0
+      ],
+      "a_formant": [
+        728.0,
+        1820.0,
+        2548.0,
+        3276.0
+      ]
+    },
+    "tolerance_db": 3.0,
+    "ok": true,
+    "note": "包络峰位由声道参数决定，不随 f0 改变；最靠近共振峰的谐波会随 f0 移动，不能当作共振峰。"
+  },
+  "320": {
+    "alt_f0_requested_hz": 320.0,
+    "alt_f0_used_hz": 293.76,
+    "alt_clearance_ratio": 0.2331,
+    "probes_s": [
+      1.48,
+      1.675,
+      1.85
+    ],
+    "explainability": {
+      "anchor": {
+        "variant": "anchor",
+        "frames": [
+          {
+            "t_s": 1.48,
+            "corr": 1.0,
+            "rmse_db": 0.123,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.675,
+            "corr": 1.0,
+            "rmse_db": 0.009,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.85,
+            "corr": 1.0,
+            "rmse_db": 0.078,
+            "n_harmonics": 11
+          }
+        ]
+      },
+      "a_formant": {
+        "variant": "a_formant",
+        "frames": [
+          {
+            "t_s": 1.48,
+            "corr": 1.0,
+            "rmse_db": 0.032,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.675,
+            "corr": 1.0,
+            "rmse_db": 0.003,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.85,
+            "corr": 1.0,
+            "rmse_db": 0.037,
+            "n_harmonics": 11
+          }
+        ]
+      },
+      "b_tilt": {
+        "variant": "b_tilt",
+        "frames": [
+          {
+            "t_s": 1.48,
+            "corr": 1.0,
+            "rmse_db": 0.118,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.675,
+            "corr": 1.0,
+            "rmse_db": 0.034,
+            "n_harmonics": 11
+          },
+          {
+            "t_s": 1.85,
+            "corr": 1.0,
+            "rmse_db": 0.028,
+            "n_harmonics": 11
+          }
+        ]
+      }
+    },
+    "envelope_peaks_hz": {
+      "anchor": [
+        500.0,
+        1397.4,
+        2494.9,
+        3379.5
+      ],
+      "a_formant": [
+        820.5,
+        1951.3,
+        2694.9,
+        3374.4
+      ]
+    },
+    "nearest_harmonic_to_formant_hz": {
+      "anchor": [
+        367.2,
+        1468.8,
+        2570.4,
+        3304.8
+      ],
+      "a_formant": [
+        734.4,
+        1836.0,
+        2570.4,
+        3304.8
+      ]
+    },
+    "tolerance_db": 3.0,
+    "ok": true,
+    "note": "包络峰位由声道参数决定，不随 f0 改变；最靠近共振峰的谐波会随 f0 移动，不能当作共振峰。"
+  }
+}

@@ -10,6 +10,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 
 import numpy as np
 
@@ -117,6 +118,97 @@ def cmd_gui(_a: argparse.Namespace) -> None:
     gui.show()
 
 
+# --------------------------------------------------------------------------
+# 同音高、异声道练习集
+# --------------------------------------------------------------------------
+def _exercise_spec(a: argparse.Namespace):
+    from .exercise import ExerciseSpec
+    spec = ExerciseSpec(
+        f0_requested=a.f0, seed=a.seed,
+        tilt_target_db=a.tilt, fs=a.fs)
+    if a.anchor:
+        spec.anchor_freqs = tuple(float(x) for x in a.anchor.split(","))
+    if a.moved:
+        spec.moved_freqs = tuple(float(x) for x in a.moved.split(","))
+    return spec
+
+
+def cmd_build(a: argparse.Namespace) -> None:
+    from .exercise import build_exercise, save_assets
+
+    spec = _exercise_spec(a)
+    built = build_exercise(spec, f0=a.f0 if a.f0 is not None else None,
+                           analysis=True)
+    files = save_assets(built, a.out, hide_answer=a.hide_answer)
+    info = built.f0_info
+    print(f"已重建练习：f0 请求 {info['f0_requested']:.1f} Hz → 采用 "
+          f"{info['f0_used']:.2f} Hz（谐波离共振峰最小 "
+          f"{info['worst_harmonic_offset_hz']:.1f} Hz，"
+          f"安全 {info['safe']}）")
+    for variant in ("a_formant", "b_tilt"):
+        d = built.answer["divergence"][variant]
+        print(f"  {variant:9s} 与参照的谱形差：滑音前 "
+              f"{d['pre_glide_median_db']:.2f} dB / 滑音后 "
+              f"{d['post_glide_median_db']:.2f} dB；"
+              f"实测分岔起点 {d['onset_s']} s（计划 {d['scheduled_glide_start_s']} s）")
+    pair = built.answer["pair_a_vs_b"]
+    print(f"  A vs B     ：滑音前 {pair['pre_glide_median_db']:.2f} dB → "
+          f"滑音后 {pair['post_glide_median_db']:.2f} dB；"
+          f"分离起点 {pair['onset_s']} s")
+    if a.hide_answer:
+        print("  答案已隐藏：未写 answer.json，图不含答案轨迹。")
+    print("  产物：", ", ".join(os.path.relpath(p) for p in files.values()))
+
+
+def cmd_verify(a: argparse.Namespace) -> None:
+    from .exercise import build_exercise, cross_pitch_check
+
+    spec = _exercise_spec(a)
+    built = build_exercise(spec, f0=a.f0, analysis=False)
+    print(f"基准 f0 = {built.f0:.2f} Hz；用另一基频重新生成实际输出：")
+    for alt in a.alt_f0:
+        cp = cross_pitch_check(built, alt)
+        print(f"  alt {alt:6.1f} → 采用 {cp['alt_f0_used_hz']:7.2f} Hz | "
+              f"可解释 {'是' if cp['ok'] else '否'}（容差 "
+              f"{cp['tolerance_db']} dB）")
+        for v in ("anchor", "a_formant"):
+            frames = cp["explainability"][v]["frames"]
+            worst = max(r["rmse_db"] for r in frames)
+            print(f"    {v:9s} 预测-实测 RMS 最大 {worst:.3f} dB，"
+                  f"相关最小 {min(r['corr'] for r in frames):.4f}")
+        print(f"    包络峰位（不随 f0 变）: {cp['envelope_peaks_hz']}")
+        print(f"    最强谐波按中心就近取：{cp['nearest_harmonic_to_formant_hz']}"
+              f"（会随 f0 移动，不可当共振峰）")
+    if a.bands_demo:
+        _print_pitch_demo()
+
+
+def _print_pitch_demo() -> None:
+    from .exercise import PitchDemoSpec, build_pitch_demo
+    demo = build_pitch_demo(PitchDemoSpec())
+    print("\n音高穿过两个共振带之间的示范：")
+    print("  " + demo["finding"])
+    focus = demo["focus_frame"]
+    if focus:
+        print(f"  焦点帧 t={focus['t_s']} s：f0={focus['f0_hz']} Hz，"
+              f"距 F1 {focus['strongest_offset_to_f1_hz']} Hz、"
+              f"距 F2 {focus['strongest_offset_to_f2_hz']} Hz；"
+              f"该帧最强谐波就是基波。")
+
+
+def cmd_demo(a: argparse.Namespace) -> None:
+    from .exercise import PitchDemoSpec, build_pitch_demo, save_pitch_demo
+    demo = build_pitch_demo(PitchDemoSpec())
+    files = save_pitch_demo(demo, a.out)
+    print("音高穿带示范：" + demo["finding"])
+    print("  产物：", ", ".join(os.path.relpath(p) for p in files.values()))
+
+
+def cmd_gui_exercise(_a: argparse.Namespace) -> None:
+    from .exercise_gui import ExerciseGUI
+    ExerciseGUI().show()
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="vowel_synth",
@@ -162,6 +254,37 @@ def build_parser() -> argparse.ArgumentParser:
 
     sp = sub.add_parser("gui", help="启动交互界面")
     sp.set_defaults(func=cmd_gui)
+
+    def add_practice(sp: argparse.ArgumentParser) -> None:
+        sp.add_argument("--f0", type=float, default=176.0,
+                        help="请求基频；会就近选一个谐波不压共振峰的值")
+        sp.add_argument("--seed", type=int, default=20261120)
+        sp.add_argument("--tilt", type=float, default=-24.0,
+                        help="B 组滑音后的源谱倾斜（高频相对低频 dB）")
+        sp.add_argument("--anchor", help="参照共振峰，逗号分隔 F1,F2,F3,F4")
+        sp.add_argument("--moved", help="A 组滑音后的共振峰，逗号分隔")
+        sp.add_argument("--fs", type=int, default=16000)
+
+    sp = sub.add_parser("build", help="重建同音高异声道练习（音频+参数+答案）")
+    add_practice(sp)
+    sp.add_argument("-o", "--out", default="demo_output/exercise")
+    sp.add_argument("--hide-answer", action="store_true",
+                    help="不写答案 JSON/轨迹，用于让学员盲听")
+    sp.set_defaults(func=cmd_build)
+
+    sp = sub.add_parser("verify", help="跨基频重新生成并核对答案可解释性")
+    add_practice(sp)
+    sp.add_argument("--alt-f0", type=float, nargs="+", default=[120.0, 260.0])
+    sp.add_argument("--bands-demo", action="store_true",
+                    help="同时打印音高穿带示范的结论")
+    sp.set_defaults(func=cmd_verify)
+
+    sp = sub.add_parser("demo", help="音高正经过两个共振带之间的示范")
+    sp.add_argument("-o", "--out", default="demo_output/exercise")
+    sp.set_defaults(func=cmd_demo)
+
+    sp = sub.add_parser("exercise-gui", help="乐器窗口：暂停/固定层/显示差异")
+    sp.set_defaults(func=cmd_gui_exercise)
     return parser
 
 

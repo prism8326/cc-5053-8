@@ -25,6 +25,7 @@ class SynthParams:
     shape: str = "rosenberg"          # rosenberg | saw
     noise_gain: float = 0.02          # 送气噪声分量
     voiced_gain: float = 1.0
+    tilt_db: float = 0.0              # 源谱倾斜：高频相对低频增益(dB)
 
     def __post_init__(self) -> None:
         self.freqs = np.asarray(self.freqs, dtype=float)
@@ -51,11 +52,14 @@ def render(duration: float, fs: float, params: SynthParams,
            block_size: int = 256, f0_envelope: np.ndarray | None = None,
            freq_envelope: np.ndarray | None = None,
            bw_envelope: np.ndarray | None = None,
-           normalize: bool = True) -> dict:
+           tilt_envelope: np.ndarray | None = None,
+           noise_envelope: np.ndarray | None = None,
+           voiced_envelope: np.ndarray | None = None,
+           normalize: bool = True, seed: int = 0) -> dict:
     """离线渲染。包络可选，按块给出；未给则使用 params 中的常量。
 
     返回 dict：y(输出), source(源信号), f0_track, freqs, bws,
-    effective(每块实际系数), warnings。
+    tilt, noise, voiced（逐块包络），effective(每块实际系数), warnings。
     """
     n = int(round(duration * fs))
     n_blocks = int(np.ceil(n / block_size))
@@ -63,6 +67,14 @@ def render(duration: float, fs: float, params: SynthParams,
 
     f0_env = _as_envelope(f0_envelope if f0_envelope is not None else params.f0,
                           n_blocks)
+    tilt_env = _as_envelope(
+        tilt_envelope if tilt_envelope is not None else params.tilt_db, n_blocks)
+    noise_env = _as_envelope(
+        noise_envelope if noise_envelope is not None else params.noise_gain,
+        n_blocks)
+    voiced_env = _as_envelope(
+        voiced_envelope if voiced_envelope is not None else params.voiced_gain,
+        n_blocks)
     if freq_envelope is None:
         freq_env = np.tile(params.freqs, (n_blocks, 1))
     else:
@@ -77,6 +89,7 @@ def render(duration: float, fs: float, params: SynthParams,
             raise ValueError(f"bw_envelope 形状须为 ({n_blocks},{nf})")
 
     source = GlottalSource(fs, params.shape)
+    source.rng = np.random.default_rng(seed)
     cascade = FormantCascade(nf, fs)
 
     y_out = np.zeros(n)
@@ -88,10 +101,15 @@ def render(duration: float, fs: float, params: SynthParams,
         # 块内 f0 线性插值，扫描平滑
         f0_prev = f0_env[b - 1] if b else f0_env[0]
         f0_block = f0_prev + (f0_env[b] - f0_prev) * np.linspace(0, 1, m, endpoint=False)
+        # 源谱倾斜同样线性过渡，避免块边界出现音色台阶
+        tilt_prev = tilt_env[b - 1] if b else tilt_env[0]
+        tilt_block = tilt_prev + (tilt_env[b] - tilt_prev) * np.linspace(
+            0, 1, m, endpoint=False)
 
         src = source.generate_block(
             m, f0_block, open_quotient=params.open_quotient,
-            noise_gain=params.noise_gain, voiced_gain=params.voiced_gain)
+            noise_gain=float(noise_env[b]), voiced_gain=float(voiced_env[b]),
+            tilt_db=tilt_block)
         y, warns = cascade.process_block(src, freq_env[b], bw_env[b])
         src_out[i0:i1], y_out[i0:i1] = src, y
         if warns:
@@ -112,6 +130,10 @@ def render(duration: float, fs: float, params: SynthParams,
         "f0_track": np.repeat(f0_env, block_size)[:n],
         "freqs": freq_env,
         "bws": bw_env,
+        "tilt": tilt_env,
+        "noise": noise_env,
+        "voiced": voiced_env,
+        "block_size": block_size,
         "effective": np.array(effective),   # (n_blocks, n_formants, 5)
         "warnings": warnings,
     }
@@ -140,7 +162,8 @@ class RealtimeEngine:
         p = self.params
         src = self._source.generate_block(
             m, p.f0, open_quotient=p.open_quotient,
-            noise_gain=p.noise_gain, voiced_gain=p.voiced_gain)
+            noise_gain=p.noise_gain, voiced_gain=p.voiced_gain,
+            tilt_db=p.tilt_db)
         y, warns = self._cascade.process_block(src, p.freqs, p.bws)
         self.last_warnings, self.last_specs = warns, self._cascade.specs
         return np.tanh(y)

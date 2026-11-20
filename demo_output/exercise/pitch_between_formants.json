@@ -1,0 +1,474 @@
+{
+  "envelope_peaks_hz": [
+    520.5,
+    976.9,
+    2597.4,
+    3379.5
+  ],
+  "focus_frame": {
+    "t_s": 1.35,
+    "f0_hz": 753.33,
+    "strongest_harmonic_hz": 753.33,
+    "strongest_harmonic_db": -13.03,
+    "between_bands": true,
+    "strongest_offset_to_f1_hz": 233.3,
+    "strongest_offset_to_f2_hz": 226.7
+  },
+  "finding": "f0 sweeps 380 -> 1100 Hz and passes F1=520 Hz and F2=980 Hz in turn. The tract envelope peaks stay at 521/977 Hz, yet at f0=753.3 Hz the fundamental sits between the two bands and is the strongest harmonic. A local maximum in the harmonic spectrum is therefore not the center of a vocal-tract resonance.",
+  "spec": {
+    "fs": 16000,
+    "duration": 2.6,
+    "block": 256,
+    "f0_start": 380.0,
+    "f0_end": 1100.0,
+    "freqs": [
+      520.0,
+      980.0,
+      2600.0,
+      3400.0
+    ],
+    "bws": [
+      55.0,
+      70.0,
+      140.0,
+      180.0
+    ],
+    "open_quotient": 0.62,
+    "noise_gain": 0.0,
+    "tilt_db": 0.0
+  },
+  "frames": [
+    {
+      "t_s": 0.1,
+      "f0_hz": 406.67,
+      "strongest_harmonic_hz": 406.67,
+      "strongest_harmonic_db": -16.98,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 113.3,
+      "strongest_offset_to_f2_hz": 573.3
+    },
+    {
+      "t_s": 0.15,
+      "f0_hz": 420.0,
+      "strongest_harmonic_hz": 420.0,
+      "strongest_harmonic_db": -15.58,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 100.0,
+      "strongest_offset_to_f2_hz": 560.0
+    },
+    {
+      "t_s": 0.2,
+      "f0_hz": 433.33,
+      "strongest_harmonic_hz": 433.33,
+      "strongest_harmonic_db": -14.07,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 86.7,
+      "strongest_offset_to_f2_hz": 546.7
+    },
+    {
+      "t_s": 0.25,
+      "f0_hz": 446.67,
+      "strongest_harmonic_hz": 446.67,
+      "strongest_harmonic_db": -12.41,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 73.3,
+      "strongest_offset_to_f2_hz": 533.3
+    },
+    {
+      "t_s": 0.3,
+      "f0_hz": 460.0,
+      "strongest_harmonic_hz": 460.0,
+      "strongest_harmonic_db": -10.57,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 60.0,
+      "strongest_offset_to_f2_hz": 520.0
+    },
+    {
+      "t_s": 0.35,
+      "f0_hz": 473.33,
+      "strongest_harmonic_hz": 473.33,
+      "strongest_harmonic_db": -8.51,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 46.7,
+      "strongest_offset_to_f2_hz": 506.7
+    },
+    {
+      "t_s": 0.4,
+      "f0_hz": 491.11,
+      "strongest_harmonic_hz": 491.11,
+      "strongest_harmonic_db": -6.57,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 28.9,
+      "strongest_offset_to_f2_hz": 488.9
+    },
+    {
+      "t_s": 0.45,
+      "f0_hz": 504.44,
+      "strongest_harmonic_hz": 504.44,
+      "strongest_harmonic_db": -4.18,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 15.6,
+      "strongest_offset_to_f2_hz": 475.6
+    },
+    {
+      "t_s": 0.5,
+      "f0_hz": 517.78,
+      "strongest_harmonic_hz": 517.78,
+      "strongest_harmonic_db": -2.21,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 2.2,
+      "strongest_offset_to_f2_hz": 462.2
+    },
+    {
+      "t_s": 0.55,
+      "f0_hz": 531.11,
+      "strongest_harmonic_hz": 531.11,
+      "strongest_harmonic_db": -1.63,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 11.1,
+      "strongest_offset_to_f2_hz": 448.9
+    },
+    {
+      "t_s": 0.6,
+      "f0_hz": 544.44,
+      "strongest_harmonic_hz": 544.44,
+      "strongest_harmonic_db": -2.84,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 24.4,
+      "strongest_offset_to_f2_hz": 435.6
+    },
+    {
+      "t_s": 0.65,
+      "f0_hz": 557.78,
+      "strongest_harmonic_hz": 557.78,
+      "strongest_harmonic_db": -4.7,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 37.8,
+      "strongest_offset_to_f2_hz": 422.2
+    },
+    {
+      "t_s": 0.7,
+      "f0_hz": 571.11,
+      "strongest_harmonic_hz": 571.11,
+      "strongest_harmonic_db": -6.37,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 51.1,
+      "strongest_offset_to_f2_hz": 408.9
+    },
+    {
+      "t_s": 0.75,
+      "f0_hz": 584.44,
+      "strongest_harmonic_hz": 584.44,
+      "strongest_harmonic_db": -7.75,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 64.4,
+      "strongest_offset_to_f2_hz": 395.6
+    },
+    {
+      "t_s": 0.8,
+      "f0_hz": 602.22,
+      "strongest_harmonic_hz": 602.22,
+      "strongest_harmonic_db": -9.17,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 82.2,
+      "strongest_offset_to_f2_hz": 377.8
+    },
+    {
+      "t_s": 0.85,
+      "f0_hz": 615.56,
+      "strongest_harmonic_hz": 615.56,
+      "strongest_harmonic_db": -10.02,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 95.6,
+      "strongest_offset_to_f2_hz": 364.4
+    },
+    {
+      "t_s": 0.9,
+      "f0_hz": 628.89,
+      "strongest_harmonic_hz": 628.89,
+      "strongest_harmonic_db": -10.72,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 108.9,
+      "strongest_offset_to_f2_hz": 351.1
+    },
+    {
+      "t_s": 0.95,
+      "f0_hz": 642.22,
+      "strongest_harmonic_hz": 642.22,
+      "strongest_harmonic_db": -11.28,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 122.2,
+      "strongest_offset_to_f2_hz": 337.8
+    },
+    {
+      "t_s": 1.0,
+      "f0_hz": 655.56,
+      "strongest_harmonic_hz": 655.56,
+      "strongest_harmonic_db": -11.74,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 135.6,
+      "strongest_offset_to_f2_hz": 324.4
+    },
+    {
+      "t_s": 1.05,
+      "f0_hz": 668.89,
+      "strongest_harmonic_hz": 668.89,
+      "strongest_harmonic_db": -12.11,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 148.9,
+      "strongest_offset_to_f2_hz": 311.1
+    },
+    {
+      "t_s": 1.1,
+      "f0_hz": 682.22,
+      "strongest_harmonic_hz": 682.22,
+      "strongest_harmonic_db": -12.41,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 162.2,
+      "strongest_offset_to_f2_hz": 297.8
+    },
+    {
+      "t_s": 1.15,
+      "f0_hz": 695.56,
+      "strongest_harmonic_hz": 695.56,
+      "strongest_harmonic_db": -12.63,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 175.6,
+      "strongest_offset_to_f2_hz": 284.4
+    },
+    {
+      "t_s": 1.2,
+      "f0_hz": 713.33,
+      "strongest_harmonic_hz": 713.33,
+      "strongest_harmonic_db": -13.07,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 193.3,
+      "strongest_offset_to_f2_hz": 266.7
+    },
+    {
+      "t_s": 1.25,
+      "f0_hz": 726.67,
+      "strongest_harmonic_hz": 726.67,
+      "strongest_harmonic_db": -13.11,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 206.7,
+      "strongest_offset_to_f2_hz": 253.3
+    },
+    {
+      "t_s": 1.3,
+      "f0_hz": 740.0,
+      "strongest_harmonic_hz": 740.0,
+      "strongest_harmonic_db": -13.1,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 220.0,
+      "strongest_offset_to_f2_hz": 240.0
+    },
+    {
+      "t_s": 1.35,
+      "f0_hz": 753.33,
+      "strongest_harmonic_hz": 753.33,
+      "strongest_harmonic_db": -13.03,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 233.3,
+      "strongest_offset_to_f2_hz": 226.7
+    },
+    {
+      "t_s": 1.4,
+      "f0_hz": 766.67,
+      "strongest_harmonic_hz": 766.67,
+      "strongest_harmonic_db": -12.91,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 246.7,
+      "strongest_offset_to_f2_hz": 213.3
+    },
+    {
+      "t_s": 1.45,
+      "f0_hz": 780.0,
+      "strongest_harmonic_hz": 780.0,
+      "strongest_harmonic_db": -12.74,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 260.0,
+      "strongest_offset_to_f2_hz": 200.0
+    },
+    {
+      "t_s": 1.5,
+      "f0_hz": 793.33,
+      "strongest_harmonic_hz": 793.33,
+      "strongest_harmonic_db": -12.52,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 273.3,
+      "strongest_offset_to_f2_hz": 186.7
+    },
+    {
+      "t_s": 1.55,
+      "f0_hz": 806.67,
+      "strongest_harmonic_hz": 806.67,
+      "strongest_harmonic_db": -12.24,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 286.7,
+      "strongest_offset_to_f2_hz": 173.3
+    },
+    {
+      "t_s": 1.6,
+      "f0_hz": 824.44,
+      "strongest_harmonic_hz": 824.44,
+      "strongest_harmonic_db": -12.18,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 304.4,
+      "strongest_offset_to_f2_hz": 155.6
+    },
+    {
+      "t_s": 1.65,
+      "f0_hz": 837.78,
+      "strongest_harmonic_hz": 837.78,
+      "strongest_harmonic_db": -11.71,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 317.8,
+      "strongest_offset_to_f2_hz": 142.2
+    },
+    {
+      "t_s": 1.7,
+      "f0_hz": 851.11,
+      "strongest_harmonic_hz": 851.11,
+      "strongest_harmonic_db": -11.16,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 331.1,
+      "strongest_offset_to_f2_hz": 128.9
+    },
+    {
+      "t_s": 1.75,
+      "f0_hz": 864.44,
+      "strongest_harmonic_hz": 864.44,
+      "strongest_harmonic_db": -10.53,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 344.4,
+      "strongest_offset_to_f2_hz": 115.6
+    },
+    {
+      "t_s": 1.8,
+      "f0_hz": 877.78,
+      "strongest_harmonic_hz": 877.78,
+      "strongest_harmonic_db": -9.8,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 357.8,
+      "strongest_offset_to_f2_hz": 102.2
+    },
+    {
+      "t_s": 1.85,
+      "f0_hz": 891.11,
+      "strongest_harmonic_hz": 891.11,
+      "strongest_harmonic_db": -8.95,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 371.1,
+      "strongest_offset_to_f2_hz": 88.9
+    },
+    {
+      "t_s": 1.9,
+      "f0_hz": 904.44,
+      "strongest_harmonic_hz": 904.44,
+      "strongest_harmonic_db": -7.98,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 384.4,
+      "strongest_offset_to_f2_hz": 75.6
+    },
+    {
+      "t_s": 1.95,
+      "f0_hz": 917.78,
+      "strongest_harmonic_hz": 917.78,
+      "strongest_harmonic_db": -6.86,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 397.8,
+      "strongest_offset_to_f2_hz": 62.2
+    },
+    {
+      "t_s": 2.0,
+      "f0_hz": 935.56,
+      "strongest_harmonic_hz": 935.56,
+      "strongest_harmonic_db": -5.89,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 415.6,
+      "strongest_offset_to_f2_hz": 44.4
+    },
+    {
+      "t_s": 2.05,
+      "f0_hz": 948.89,
+      "strongest_harmonic_hz": 948.89,
+      "strongest_harmonic_db": -4.44,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 428.9,
+      "strongest_offset_to_f2_hz": 31.1
+    },
+    {
+      "t_s": 2.1,
+      "f0_hz": 962.22,
+      "strongest_harmonic_hz": 962.22,
+      "strongest_harmonic_db": -3.01,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 442.2,
+      "strongest_offset_to_f2_hz": 17.8
+    },
+    {
+      "t_s": 2.15,
+      "f0_hz": 975.56,
+      "strongest_harmonic_hz": 975.56,
+      "strongest_harmonic_db": -1.98,
+      "between_bands": true,
+      "strongest_offset_to_f1_hz": 455.6,
+      "strongest_offset_to_f2_hz": 4.4
+    },
+    {
+      "t_s": 2.2,
+      "f0_hz": 988.89,
+      "strongest_harmonic_hz": 988.89,
+      "strongest_harmonic_db": -1.91,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 468.9,
+      "strongest_offset_to_f2_hz": 8.9
+    },
+    {
+      "t_s": 2.25,
+      "f0_hz": 1002.22,
+      "strongest_harmonic_hz": 1002.22,
+      "strongest_harmonic_db": -3.03,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 482.2,
+      "strongest_offset_to_f2_hz": 22.2
+    },
+    {
+      "t_s": 2.3,
+      "f0_hz": 1015.56,
+      "strongest_harmonic_hz": 1015.56,
+      "strongest_harmonic_db": -4.87,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 495.6,
+      "strongest_offset_to_f2_hz": 35.6
+    },
+    {
+      "t_s": 2.35,
+      "f0_hz": 1028.89,
+      "strongest_harmonic_hz": 1028.89,
+      "strongest_harmonic_db": -6.77,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 508.9,
+      "strongest_offset_to_f2_hz": 48.9
+    },
+    {
+      "t_s": 2.4,
+      "f0_hz": 1046.67,
+      "strongest_harmonic_hz": 1046.67,
+      "strongest_harmonic_db": -8.85,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 526.7,
+      "strongest_offset_to_f2_hz": 66.7
+    },
+    {
+      "t_s": 2.45,
+      "f0_hz": 1060.0,
+      "strongest_harmonic_hz": 1060.0,
+      "strongest_harmonic_db": -10.35,
+      "between_bands": false,
+      "strongest_offset_to_f1_hz": 540.0,
+      "strongest_offset_to_f2_hz": 80.0
+    }
+  ]
+}
